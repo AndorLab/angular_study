@@ -1,0 +1,20 @@
+<div class='todo-wrapper'>
+<h1>Todo List!</h1>
+<input (keydown)='addTodo($event)' [(ngModel)]='input'/>
+
+<h2>未完成项</h2>
+
+<ol>
+  <li *ngFor="let todo of todoList; let key=index;" [hidden]='todo.status==1'>
+    <input name='check' type='checkbox' (click)="finish(todo.title)" /><label for='check'>{{todo.title}}</label>
+  </li>
+</ol>
+
+<h2>已完成项</h2>
+<ol>
+  <li *ngFor="let todo of todoList; let key=index;" [hidden]='todo.status==0'>
+    <input name='check' type='checkbox' (click)="finish(todo.title)" /><label for='check'>{{todo.title}}</label>
+  </li>
+</ol>
+</div>
+
