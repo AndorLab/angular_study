@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,5 +14,23 @@ export class StorageService {
   }
   remove(key: string) {
     localStorage.removeItem(key);
+  }
+
+  getRxJsData() {
+    return new Observable(observe => {
+      setTimeout(() => {
+        observe.next('Data from rxjs');
+      }, 1000);
+    });
+  }
+
+  getRxDataInterval() {
+    return new Observable(observe => {
+      let count = 0;
+      setInterval(() => {
+        count++;
+        observe.next(`RxJS data interval ${count}`);
+      }, 1000);
+    });
   }
 }
