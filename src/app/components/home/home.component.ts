@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
     alert('test from father');
   }
 
+  messageFromChild(evt) {
+    console.log(evt);
+  }
+
 }

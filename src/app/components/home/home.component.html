@@ -1,2 +1,2 @@
 <p>home works!</p>
-<app-header [title]="title" [method]='run'></app-header>
+<app-header [title]="title" [method]='run' (outEmitter)='messageFromChild($event)'></app-header>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -58,6 +58,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() title: any;
   @Input() method: any;
+  @Output() outEmitter = new EventEmitter();
   constructor() { }
 
 
@@ -78,6 +79,7 @@ export class HeaderComponent implements OnInit {
   run(evt) {
     console.log('执行run');
     console.log(evt);
+    this.outEmitter.emit('这是从子组件里传过来的值');
   }
 
   executeMethodFromFather() {
