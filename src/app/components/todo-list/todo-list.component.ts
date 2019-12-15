@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { StorageService } from '../../service/storage.service';
+import { TodoListKey } from '../../constants/todoList';
+
 interface ITodo {
   title: string;
   status: number; // 0 为完成，1 完成，2 其他
@@ -14,9 +17,11 @@ interface ITodo {
 export class TodoListComponent implements OnInit {
   public input = '';
   public todoList: Array<ITodo> = [];
-  constructor() { }
+  constructor(public storage: StorageService) {
+  }
 
   ngOnInit() {
+    this.todoList = this.storage.get(TodoListKey);
   }
 
   hasInArr(arr, item) {
@@ -32,20 +37,19 @@ export class TodoListComponent implements OnInit {
           status: 0,
         });
         this.input = '';
+        this.storage.set(TodoListKey, this.todoList);
       }
-
-
     }
   }
 
   finish(todoTitle) {
     this.todoList = this.todoList.map(todo => {
       if (todo.title === todoTitle) {
-        todo.status = 1;
+        todo.status = todo.status === 1 ? 0 : 1;
         return todo;
       }
-
       return todo;
     });
+    this.storage.set(TodoListKey, this.todoList);
   }
 }
