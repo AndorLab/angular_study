@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { StorageService } from '../../service/storage.service';
+import { map, filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -68,13 +70,16 @@ export class HeaderComponent implements OnInit {
       console.log(data);
     });
     const stream2 = this.storageService.getRxDataInterval();
-    const d = stream2.subscribe(data => {
-      console.log(data);
-    });
+    const pipe = stream2.pipe(
+      filter((v: number ) => v % 2 === 0),
+      map(v => v * v)
+    )
+      .subscribe(data => {
+        console.log(data);
+      });
     setTimeout(() => {
-      d.unsubscribe();
+      pipe.unsubscribe();
     }, 10000);
-
   }
   click() {
     this.testTitle = '改变后的数据';

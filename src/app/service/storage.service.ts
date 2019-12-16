@@ -29,7 +29,7 @@ export class StorageService {
       let count = 0;
       setInterval(() => {
         count++;
-        observe.next(`RxJS data interval ${count}`);
+        observe.next(count);
       }, 1000);
     });
   }
