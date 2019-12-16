@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { StorageService } from './service/storage.service';
 import { NewsComponent } from './components/news/news.component';
@@ -22,6 +22,7 @@ import { NewsComponent } from './components/news/news.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [
     StorageService,

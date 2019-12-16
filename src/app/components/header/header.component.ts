@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import { StorageService } from '../../service/storage.service';
 import { map, filter } from 'rxjs/operators';
 
@@ -61,10 +62,15 @@ export class HeaderComponent implements OnInit {
   @Input() title: any;
   @Input() method: any;
   @Output() outEmitter = new EventEmitter();
-  constructor(public storageService: StorageService) { }
+  constructor(public storageService: StorageService, public http: HttpClient) { }
 
 
   ngOnInit() {
+
+    this.http.get('http://a.itying.com/api/productlist').subscribe(res => {
+      console.log(res);
+    });
+
     const stream1 = this.storageService.getRxJsData();
     stream1.subscribe(data => {
       console.log(data);
