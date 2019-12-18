@@ -1,1 +1,17 @@
 <p>news works!</p>
+
+<ol>
+
+   <li *ngFor="let item of newsList; let key = index">
+    <a [routerLink]='["/newsContent"]' [queryParams]="{aid: key}">{{item}}</a>
+   </li>
+</ol>
+
+<hr/>
+
+<ol>
+
+  <li *ngFor="let item of newsList; let key = index">
+   <a [routerLink]='["/newsContent", key]'>{{item}}</a>
+  </li>
+</ol>

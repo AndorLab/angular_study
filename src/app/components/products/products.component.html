@@ -1,1 +1,17 @@
-<p>products works!</p>
+<div class='wrapper'>
+  <div class="left">
+
+    <a [routerLink]='["/products/list"]' routerLinkActive='active'>列表</a>
+    <br />
+    <a [routerLink]='["/products/cate"]' routerLinkActive='active'>商品</a>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+<!-- <button (click)="goToDetail()"> 用js跳转路由</button>
+<button (click)="goToParams()">带queryParams跳转</button> -->

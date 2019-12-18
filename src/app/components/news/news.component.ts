@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
+  public newsList: string[] = [];
   constructor() { }
 
   ngOnInit() {
+    for (let i = 1; i < 10; i++) {
+      this.newsList.push(`test-${i}`);
+    }
   }
 
 }
