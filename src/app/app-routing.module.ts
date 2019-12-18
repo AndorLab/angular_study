@@ -14,49 +14,63 @@ import { SettingComponent } from './components/home/setting/setting.component';
 import { PlistComponent } from './components/products/plist/plist.component';
 import { PcateComponent } from './components/products/pcate/pcate.component';
 const routes: Routes = [
+  // {
+  //   path: 'home', component: HomeComponent,
+  //   children: [
+  //     {
+  //       path: 'welcome', component: WelcomeComponent,
+  //     },
+  //     {
+  //       path: 'setting', component: SettingComponent,
+  //     },
+  //     {
+  //       path: '**',
+  //       redirectTo: 'welcome'
+  //     },
+  //   ]
+  // },
+  // {
+  //   path: 'news', component: NewsComponent,
+  // },
+  // {
+  //   path: 'newsContent/:aid', component: NewscontentComponent,
+  // },
+  // {
+  //   path: 'products', component: ProductsComponent,
+  //   children: [
+  //     {
+  //       path: 'list', component: PlistComponent,
+  //     },
+  //     {
+  //       path: 'cate', component: PcateComponent,
+  //     },
+  //     {
+  //       path: '**',
+  //       redirectTo: 'list'
+  //     },
+  //   ]
+  // },
+  // {
+  //   path: 'products/:pid', component: ProductDetailComponent,
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'home'
+  // }
+
   {
-    path: 'home', component: HomeComponent,
-    children: [
-      {
-        path: 'welcome', component: WelcomeComponent,
-      },
-      {
-        path: 'setting', component: SettingComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'welcome'
-      },
-    ]
+    path: 'user', loadChildren: './module/user/user.module#UserModule'
   },
   {
-    path: 'news', component: NewsComponent,
+    path: 'article', loadChildren: './module/article/article.module#ArticleModule'
   },
   {
-    path: 'newsContent/:aid', component: NewscontentComponent,
+    path: 'product', loadChildren: './module/product/product.module#ProductModule'
   },
   {
-    path: 'products', component: ProductsComponent,
-    children: [
-      {
-        path: 'list', component: PlistComponent,
-      },
-      {
-        path: 'cate', component: PcateComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'list'
-      },
-    ]
-  },
-  {
-    path: 'products/:pid', component: ProductDetailComponent,
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
+    path: '**', redirectTo: 'user'
   }
+
 ];
 
 @NgModule({
